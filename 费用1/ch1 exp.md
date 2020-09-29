@@ -43,7 +43,7 @@
 
   + 完成安装过程后释放虚拟盘，将虚拟硬盘改成多重加载模式（kali-Attacker.vdi会从虚拟电脑kali-Attacker解除关联）;
 
-    ![](img/kalidc.png)
+    ![](img/kalidc.PNG)
 
   + 检查虚拟机器kali-Attacker的设置为**硬盘启动优先**、**没有盘片**、**使用NAT网络**，检查没有问题便可以启动；
 
@@ -57,7 +57,7 @@
   
   配置的具体方案是，kali attacker作为攻击者主机，debian作为网关。由于计算机性能限制，靶机限定为3台。xP1单独在一个局域网内，kali2与xP2在一个局域网内。共计五台虚拟机如下图。
 
-    ![](img/结构.png)
+    ![](img/结构.PNG)
 
 ### 网络配置
 
@@ -74,7 +74,7 @@
      #注意配置网卡不要用AUTO。可能导致开机时间过长。
     iface enp0s8 inet dhcp
     ```
-    ![](img/enp0s8.png)
+    ![](img/enp0s8.PNG)
   + 然后使用su命令进入root用户，重启networking使得配置生效：
 
     ```shell
@@ -83,7 +83,7 @@
     ```
   + ip配置成功对SSH进行配置。使用PUTTY进行SSH连接以便后续操作。PUTTY连接成功：  
     
-    ![](img/puttyok.png)
+    ![](img/puttyok.PNG)
 
 + 第二步：对网关debian配置网卡
 
@@ -133,11 +133,11 @@
     ```
   
   + 完成后重启网卡查看debian网关状态。效果如下：
-  ![](img/debianok.png)
+  ![](img/debianok.PNG)
   
   + 同时可以通过指定ip地址的方式使xp1靶机连接至intnet1.连接时注意关闭防火墙
   
-  ![](img/xpip.png)
+  ![](img/xpip.PNG)
 
 + 第三步：对debian网关配置dnsmasq
 
@@ -184,7 +184,7 @@
   
 + 第四步：在靶机xp1上检查debian网关配置情况。进行网络连通性测试，看是否可以`ping`通互联网。
 
-  ![](img/debianin.png)
+  ![](img/debianin.PNG)
 
   
 
@@ -193,15 +193,15 @@
 
 - [√] 靶机可以直接访问攻击者主机
 
-  ![](img/atov.png)
+  ![](img/atov.PNG)
 
 - [√] 攻击者主机无法直接访问靶机
 
-  ![](img/vtoa.png)
+  ![](img/vtoa.PNG)
 
 - [√] 网关可以直接访问攻击者主机和靶机
 
-  ![](img/dtoav.png)
+  ![](img/dtoav.PNG)
 
 
 - [√] 靶机的所有对外上下行流量必须经过网关方法：
@@ -209,19 +209,19 @@
   + 靶机访问互联网后，查看网关上的dnsmasq日志
 
   + intnet1的靶机xp1流量过网关
-  ![](img/lg1.png)
+  ![](img/lg1.PNG)
 
 
   + intnet2的靶机kali2流量过网关
-  ![](img/lg2.png)
+  ![](img/lg2.PNG)
 
 - [√] 所有节点均可以访问互联网
 
   + wdebian网关前文已测试，不再重复
   + 由下图可以看出,intnet1的靶机xp1可以访问互联网：
-  ![](img/1toi.png)
+  ![](img/1toi.PNG)
   + 由下图可以看出,intnet2的靶机kali2可以访问互联网：
-  ![](img/2toi.png)
+  ![](img/2toi.PNG)
 
 
 
