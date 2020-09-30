@@ -67,7 +67,7 @@
 
 + 第一步：为网关debian的emp0s8（第二块网卡，对应着内部网络intnet1）设置IP，便于SSH连接
 
-  + 具体做法是编辑 [`/etc/network/interfaces`](./interfaces.txt)，添加配置如下图：
+  + 具体做法是编辑 /etc/network/interfaces，添加配置如下图：
 
     ```shell
     allow-hotplug enp0s8 
